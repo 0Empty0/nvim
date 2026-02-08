@@ -7,8 +7,6 @@ return {
 		"sources.default",
 	},
 	dependencies = {
-		"onsails/lspkind.nvim",
-		"rafamadriz/friendly-snippets",
 		{
 			"saghen/blink.compat",
 			optional = true,
@@ -37,81 +35,36 @@ return {
 
 		completion = {
 			accept = {
-				-- experimental auto-brackets support
 				auto_brackets = {
 					enabled = true,
 				},
 			},
 			menu = {
+				border = "rounded",
+				winhighlight = "Normal:Normal,FloatBorder:FloatBorder,CursorLine:BlinkCmpMenuSelection,Search:None",
 				draw = {
 					treesitter = { "lsp" },
-
-					components = {
-						kind_icon = {
-							text = function(ctx)
-								if vim.tbl_contains({ "Path" }, ctx.source_name) then
-									local type = ctx.item.data.type
-									local icon_data = nil
-									if type == "directory" then
-										icon_data = MiniIcons.get("directory", ctx.label)
-									else
-										icon_data = MiniIcons.get("extension", ctx.label:gsub("^%.", ""))
-									end
-									if icon_data then
-										return icon_data[1] .. ctx.icon_gap
-									end
-								end
-
-								local icon = require("lspkind").symbolic(ctx.kind, { mode = "symbol" })
-								return icon .. ctx.icon_gap
-							end,
-
-							highlight = function(ctx)
-								if vim.tbl_contains({ "Path" }, ctx.source_name) then
-									local type = ctx.item.data.type
-									local icon_data = nil
-									if type == "directory" then
-										icon_data = MiniIcons.get("directory", ctx.label)
-									else
-										icon_data = MiniIcons.get("extension", ctx.label:gsub("^%.", ""))
-									end
-									if icon_data then
-										return icon_data[2]
-									end
-								end
-								return ctx.kind_hl
-							end,
-						},
-						kind = {
-							highlight = function(ctx)
-								if vim.tbl_contains({ "Path" }, ctx.source_name) then
-									local type = ctx.item.data.type
-									local icon_data = nil
-									if type == "directory" then
-										icon_data = MiniIcons.get("directory", ctx.label)
-									else
-										icon_data = MiniIcons.get("extension", ctx.label:gsub("^%.", ""))
-									end
-									if icon_data then
-										return icon_data[2]
-									end
-								end
-								return ctx.kind_hl
-							end,
-						},
-					},
 				},
 			},
 			documentation = {
 				auto_show = true,
 				auto_show_delay_ms = 200,
+				window = {
+					border = "rounded",
+					winhighlight = "Normal:Normal,FloatBorder:FloatBorder,CursorLine:BlinkCmpDocCursorLine,Search:None",
+				},
 			},
 			ghost_text = {
 				enabled = vim.g.ai_cmp,
 			},
 		},
 
-		signature = { enabled = true },
+		signature = {
+			enabled = true,
+			window = {
+				border = "rounded",
+			},
+		},
 
 		sources = {
 			-- adding any nvim-cmp sources here will enable them
@@ -126,7 +79,7 @@ return {
 				lazydev = {
 					name = "LazyDev",
 					module = "lazydev.integrations.blink",
-					score_offset = 100, -- show at a higher priority than lsp
+					score_offset = 100,
 				},
 			},
 		},

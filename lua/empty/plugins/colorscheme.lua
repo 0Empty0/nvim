@@ -15,15 +15,83 @@ return {
 					"FloatBorder",
 					"SagaBorder",
 					"SagaNormal",
+
+					"BlinkCmpMenu",
+					"BlinkCmpMenuBorder",
+					"BlinkCmpDoc",
+					"BlinkCmpDocBorder",
+					"BlinkCmpSignatureHelp",
+					"BlinkCmpSignatureHelpBorder",
+
+					"TreesitterContext",
+					"TreesitterContextLineNumber",
+					"TreesitterContextSeparator",
+
+					"MiniStatuslineFilename",
 				},
 			})
 
 			transparent.clear_prefix("Noice")
-			transparent.clear_prefix("lualine_transitional_lualine_b")
-			transparent.clear_prefix("lualine_c")
-			transparent.clear_prefix("lualine_x")
 			transparent.clear_prefix("WhichKey")
 		end,
+	},
+
+	{
+		"xero/miasma.nvim",
+		priority = 1000,
+		opts = {},
+	},
+
+	{
+		"rebelot/kanagawa.nvim",
+		priority = 1000,
+		opts = {
+			transparent = true,
+		},
+	},
+
+	{
+		"yorumicolors/yorumi.nvim",
+		priority = 1000,
+		opts = {
+			transparent = true,
+		},
+	},
+
+	{
+		"datsfilipe/vesper.nvim",
+		priority = 1000,
+		opts = {
+			transparent = true,
+		},
+	},
+
+	{
+		"vague-theme/vague.nvim",
+		priority = 1000,
+		opts = {
+			transparent = true,
+		},
+	},
+
+	{
+		"nyoom-engineering/nyoom.nvim",
+		priority = 1000,
+		opts = {},
+	},
+
+	{
+		"oskarnurm/koda.nvim",
+		priority = 1000,
+		opts = {
+			transparent = true,
+		},
+	},
+
+	{
+		"wunki/gondolin.nvim",
+		priority = 1000,
+		opts = {},
 	},
 
 	{

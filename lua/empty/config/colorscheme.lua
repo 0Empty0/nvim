@@ -1,6 +1,4 @@
--- local scheme = "aether"
-
-local scheme = "lackluster-hack"
+local scheme = "vague"
 
 local ok = pcall(vim.cmd.colorscheme, scheme)
 if not ok then

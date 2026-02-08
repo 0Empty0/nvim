@@ -28,13 +28,27 @@ return {
 			return {
 				bigfile = { enabled = true },
 				quickfile = { enabled = true },
-				dim = { enabled = true },
+				dim = {
+					enabled = true,
+					scope = {
+						min_size = 10,
+					},
+				},
 				input = { enabled = true },
 				notifier = { enabled = true },
 				scope = { enabled = true },
 				statuscolumn = { enabled = true },
 				words = { enabled = true },
 				image = { enabled = true },
+				indent = {
+					enabled = true,
+					indent = {
+						only_scope = true,
+					},
+					chunk = {
+						enabled = true,
+					},
+				},
 				explorer = { enabled = true },
 				picker = {
 					enabled = true,
@@ -51,6 +65,7 @@ return {
 							hidden = true,
 							ignored = true,
 							exclude = {
+								".output",
 								".git",
 								".svelte-kit",
 								"node_modules",
@@ -70,6 +85,7 @@ return {
 							hidden = true,
 							ignored = true,
 							exclude = {
+								".output",
 								".git",
 								".svelte-kit",
 								"node_modules",
@@ -237,6 +253,39 @@ return {
 				end,
 				desc = "Explorer",
 			},
+			{
+				"<leader>hh",
+				function()
+					Snacks.picker.marks()
+				end,
+				desc = "Marks",
+			},
+			{
+				"<leader>uh",
+				function()
+					Snacks.picker.undo()
+				end,
+				desc = "Undo History",
+			},
+			{
+				"<leader>ud",
+				function()
+					Snacks.toggle.dim():toggle()
+				end,
+				desc = "Toggle Dim",
+			},
+			{
+				"<leader>ut",
+				function()
+					Snacks.picker.colorschemes()
+				end,
+				desc = "Theme Picker",
+			},
 		},
+		config = function(_, opts)
+			require("snacks").setup(opts)
+
+			Snacks.dim.enable(opts)
+		end,
 	},
 }

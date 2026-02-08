@@ -134,7 +134,7 @@ map("n", "<leader>l", "<cmd>Lazy<cr>", { desc = "Lazy" })
 map("n", "<leader>fn", "<cmd>enew<cr>", { desc = "New File" })
 
 -- find/search
-map("n", "<leader><leader>", function()
+map("n", "<leader>ff", function()
 	Snacks.picker.files()
 end, { desc = "Find Files" })
 map("n", "<leader>fg", function()
